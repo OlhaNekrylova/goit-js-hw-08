@@ -10,15 +10,8 @@ const refs = {
     textarea: document.querySelector('.feedback-form textarea'),
 };
 
-// const user = {
-//     email: refs.input.value,
-//     message: refs.textarea.value,
-// };
-
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onTextareaInput, 500));
-// refs.input.addEventListener('input', throttle(onTextareaInput, 500));
-// refs.textarea.addEventListener('input', throttle(onTextareaInput, 500));
 
 populateTextarea();
 
