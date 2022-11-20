@@ -5,7 +5,7 @@ import '../css/common.css';
 const STORAGE_KEY = 'videoplayer-current-time';
 
 const iframe = document.querySelector('iframe');
-// iframe.addEventListener('click', throttle(onIframeClick, 1000));
+iframe.addEventListener('click', onIframeClick);
 
 const player = new Vimeo.Player(iframe);
 const data = {
@@ -14,14 +14,21 @@ const data = {
     seconds: 3.034,
 };
 
-// function onPlayUpdate(event) {
-//     event.preventDefault();
-// }
+function onIframeClick(event) {
+    event.preventDefault();
+}
 
 player.on('timeupdate', throttle(onPlayUpdate, 1000));
 
 function onPlayUpdate (event) {
     localStorage.setItem(STORAGE_KEY, event.seconds);
+}
+
+function populateTextarea() {
+    const savedVideo = localStorage.getItem(STORAGE_KEY);
+    if (savedVideo) {
+        refs.textarea.value = savedVideo;
+    }
 }
 
 player.setCurrentTime(30.456).then(function(seconds) {
