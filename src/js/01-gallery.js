@@ -40,5 +40,4 @@ gallery.on('show.simplelightbox', function () {
 
 function onNewGalleryClick (event) {
     event.preventDefault();
-
 }
